@@ -4,9 +4,13 @@ using namespace std;
 
 int main(void)
 {
-	int* ptr1 = new int;	// int형 공간 동적할당
-	*ptr1 = 20;
-	cout << *ptr1 << endl;
+	int* ptr2 = new int[4];
+	for (int i = 0; i < 4; i++)
+	{
+		ptr2[i] = 10 + i;
+		cout << ptr2[i] << " ";
+	}
+	delete []ptr2;
 
-	delete ptr1;
+	return 0;
 }
