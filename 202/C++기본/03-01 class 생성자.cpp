@@ -13,6 +13,9 @@ public:
 	// 생성자 : 객체가 생성될 때, 호출되는 함수
 	Student(void);
 	Student(int Hakbun, const char* Name);
+	
+	// 소멸자 : 객체가 메모리에서 해제될 때, 호출되는 함수
+	~Student();
 
 	void show(void);
 };
@@ -40,6 +43,12 @@ Student::Student(int Hakbun, const char* Name)
 	int len = strlen(Name) + 1;		// 공간개수 측정
 	sName = new char[len];			// 공간생성
 	strcpy(sName, Name);
+}
+
+Student::~Student()
+{
+	delete []sName;
+	cout << "소멸자 호출" << endl;
 }
 
 void Student::show(void)
