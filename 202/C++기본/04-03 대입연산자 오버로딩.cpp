@@ -19,19 +19,7 @@ public:
 	~Student();
 	
 	// 연산자 오버로딩
-	Student& operator=(const Student& rhs)
-	{
-		cout << "대입연산자 호출" << endl;
-		
-		// 기존에 존재하는 공간을 제거하고 새 공간 할당준비
-		delete []sName;
-		nHakbun = rhs.nHakbun;
-		int len = strlen(rhs.sName) + 1;	// 공간개수 측정
-		sName = new char[len];				// 공간생성
-		strcpy(sName, rhs.sName);
-
-		return *this;
-	}
+	Student& operator=(const Student& rhs);
 
 	void show(void);
 };
@@ -90,4 +78,18 @@ void Student::show(void)
 {
 	cout << "학번은 " << nHakbun << "입니다." << endl;
 	cout << "이름은 " << sName << "입니다." << endl << endl;
+}
+
+Student& Student::operator=(const Student& rhs)
+{
+	cout << "대입연산자 호출" << endl;
+
+	// 기존에 존재하는 공간을 제거하고 새 공간 할당준비
+	delete[]sName;
+	nHakbun = rhs.nHakbun;
+	int len = strlen(rhs.sName) + 1;	// 공간개수 측정
+	sName = new char[len];				// 공간생성
+	strcpy(sName, rhs.sName);
+
+	return *this;
 }
